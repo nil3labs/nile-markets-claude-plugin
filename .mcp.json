@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "nile-markets": {
+      "url": "https://mcp.nilemarkets.com/api/mcp",
+      "transport": "streamable-http"
+    }
+  }
+}
