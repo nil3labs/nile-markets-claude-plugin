@@ -3,6 +3,7 @@ name: nile-markets:query
 description: Query Nile Markets protocol data — pool state, positions, oracle prices, account balances via MCP tools
 version: 0.3.0
 ---
+<!-- Sync with integrations/openclaw/SKILL.md -->
 
 # Query Nile Markets Protocol Data
 

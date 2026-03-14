@@ -14,7 +14,7 @@ Use this skill when users ask about how the Nile Markets protocol works. Provide
 
 ### What is Nile Markets?
 
-Nile Markets is an on-chain synthetic FX forward protocol. It enables traders to take long or short positions on the EUR/USD exchange rate at a future fixing date, settled in USDC on Ethereum. Unlike perpetual futures, positions have a fixed maturity date (tenor) and settle against a published forward price.
+Nile Markets is an on-chain non-deliverable forward (NDF) protocol. It enables traders to take long or short positions on the EUR/USD exchange rate at a future fixing date, settled in USDC on Ethereum. Unlike perpetual futures, positions have a fixed maturity date (tenor) and settle against a published forward price.
 
 - **Docs**: [Introduction](https://docs.nilemarkets.com/nile-markets/introduction)
 - **Docs**: [How It Works](https://docs.nilemarkets.com/nile-markets/how-it-works)
@@ -23,8 +23,8 @@ Nile Markets is an on-chain synthetic FX forward protocol. It enables traders to
 
 ### Sides (Long and Short)
 
-- **LONG**: Profits when EUR/USD rises (EUR strengthens vs USD). PnL = notional * (fixingPrice - entryStrike) / fixingPrice.
-- **SHORT**: Profits when EUR/USD falls (EUR weakens vs USD). PnL = notional * (entryStrike - fixingPrice) / fixingPrice.
+- **LONG**: Profits when EUR/USD rises (EUR strengthens vs USD). PnL = notional * (currentPrice - entryStrike) / PRICE_PRECISION.
+- **SHORT**: Profits when EUR/USD falls (EUR weakens vs USD). PnL = notional * (entryStrike - currentPrice) / PRICE_PRECISION.
 
 - **Docs**: [Sides](https://docs.nilemarkets.com/nile-markets/sides)
 
@@ -173,8 +173,8 @@ All fees flow to the pool vault, increasing share price for LPs.
 
 Position PnL depends on side:
 
-- **LONG PnL** = notional * (currentPrice - entryStrike) / currentPrice
-- **SHORT PnL** = notional * (entryStrike - currentPrice) / currentPrice
+- **LONG PnL** = notional * (currentPrice - entryStrike) / PRICE_PRECISION
+- **SHORT PnL** = notional * (entryStrike - currentPrice) / PRICE_PRECISION
 
 Unrealized PnL uses the current forward price. Realized PnL uses the fixing price at settlement. All PnL is denominated in USDC.
 

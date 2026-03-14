@@ -1,9 +1,9 @@
 {
   "name": "nile-markets",
   "version": "0.3.0",
-  "description": "Nile Markets Protocol - Synthetic EUR/USD FX forward protocol on Ethereum Sepolia",
+  "description": "Nile Markets Protocol - EUR/USD non-deliverable forward (NDF) protocol on Ethereum Sepolia",
   "author": "nil3labs",
-  "repository": "https://github.com/nil3labs/fx-forward-monorepo",
+  "repository": "https://github.com/nil3labs/nile-markets-monorepo",
   "skills": "skills/",
   "mcpServers": ".mcp.json"
 }

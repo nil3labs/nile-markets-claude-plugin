@@ -1,6 +1,6 @@
 # Nile Markets — Claude Code Plugin
 
-Claude Code plugin for the [Nile Markets Protocol](https://docs.nilemarkets.com), a synthetic EUR/USD FX forward protocol on Ethereum Sepolia.
+Claude Code plugin for the [Nile Markets Protocol](https://docs.nilemarkets.com), a EUR/USD non-deliverable forward (NDF) protocol on Ethereum Sepolia.
 
 > **Sepolia Testnet Only** — This plugin connects to Sepolia testnet infrastructure. All data is for development and testing purposes only.
 
@@ -13,8 +13,8 @@ Claude Code plugin for the [Nile Markets Protocol](https://docs.nilemarkets.com)
 Clone the repository and point Claude Code to the plugin directory:
 
 ```bash
-git clone https://github.com/nil3labs/fx-forward-monorepo.git
-claude --plugin-dir ./fx-forward-monorepo/integrations/claude-plugin
+git clone https://github.com/nil3labs/nile-markets-monorepo.git
+claude --plugin-dir ./nile-markets-monorepo/integrations/claude-plugin
 ```
 
 ### Direct path (local development)
@@ -22,7 +22,7 @@ claude --plugin-dir ./fx-forward-monorepo/integrations/claude-plugin
 If you already have the monorepo checked out:
 
 ```bash
-claude --plugin-dir /path/to/fx-forward-monorepo/integrations/claude-plugin
+claude --plugin-dir /path/to/nile-markets-monorepo/integrations/claude-plugin
 ```
 
 ### Verify installation
@@ -180,6 +180,54 @@ The server starts on `http://localhost:3000`. To use the local server instead of
 - **MCP server docs**: [https://docs.nilemarkets.com/ai-agents/mcp-server](https://docs.nilemarkets.com/ai-agents/mcp-server)
 - **Claude Code plugin docs**: [https://docs.nilemarkets.com/ai-agents/claude-code-plugin](https://docs.nilemarkets.com/ai-agents/claude-code-plugin)
 
+## Deployment
+
+### MCP Server
+
+The MCP server (`packages/mcp/`) is deployed as a Next.js application on Vercel.
+
+**Required environment variables:**
+
+| Variable | Description |
+|----------|-------------|
+| `RPC_URL` | Ethereum RPC endpoint (e.g., Alchemy or Infura Sepolia URL) |
+| `SUBGRAPH_URL` | The Graph subgraph query URL |
+| `NETWORK` | Network name (e.g., `sepolia`) |
+| `MILESTONE` | Current milestone (e.g., `M2`) |
+| `CHAIN_ID` | Chain ID (e.g., `11155111` for Sepolia) |
+
+**Production vs local `.mcp.json`:**
+
+Production (default in plugin):
+
+```json
+{
+  "mcpServers": {
+    "nile-markets": {
+      "url": "https://mcp.nilemarkets.com/api/mcp",
+      "transport": "streamable-http"
+    }
+  }
+}
+```
+
+Local development override:
+
+```json
+{
+  "mcpServers": {
+    "nile-markets": {
+      "url": "http://localhost:3000/api/mcp",
+      "transport": "streamable-http"
+    }
+  }
+}
+```
+
+### Documentation
+
+The documentation site at [docs.nilemarkets.com](https://docs.nilemarkets.com) is deployed via the Mintlify GitHub integration. Pushing changes to `docs/mintlify/` on the main branch triggers an automatic redeploy.
+
 ## License
 
-See the [repository root](https://github.com/nil3labs/fx-forward-monorepo) for license information.
+See the [repository root](https://github.com/nil3labs/nile-markets-monorepo) for license information.

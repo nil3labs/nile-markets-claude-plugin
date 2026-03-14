@@ -12,9 +12,9 @@ version: 0.3.0
 
 ## Overview
 
-Nile Markets is a synthetic EUR/USD FX forward protocol on Ethereum. Integrations interact with on-chain contracts via the official SDKs:
+Nile Markets is a EUR/USD non-deliverable forward (NDF) protocol on Ethereum. Integrations interact with on-chain contracts via the official SDKs:
 
-- **TypeScript**: `@fx-forward/sdk` — ABI objects and typed constants for use with viem/wagmi
+- **TypeScript**: `@nile-markets/sdk` — ABI objects and typed constants for use with viem/wagmi
 - **Rust**: `fx-contracts` crate — alloy-rs bindings generated from Foundry artifacts
 
 Full documentation: [https://docs.nilemarkets.com](https://docs.nilemarkets.com)
@@ -24,7 +24,7 @@ Full documentation: [https://docs.nilemarkets.com](https://docs.nilemarkets.com)
 ### Installation
 
 ```bash
-npm install viem @fx-forward/sdk
+npm install viem @nile-markets/sdk
 ```
 
 ### Reading Pool State
@@ -32,7 +32,7 @@ npm install viem @fx-forward/sdk
 ```typescript
 import { createPublicClient, http } from "viem";
 import { sepolia } from "viem/chains";
-import { poolVaultAbi } from "@fx-forward/sdk";
+import { poolVaultAbi } from "@nile-markets/sdk";
 
 const client = createPublicClient({
   chain: sepolia,
@@ -52,7 +52,7 @@ console.log("Total assets (USDC, 6 decimals):", totalAssets.toString());
 ### Reading Forward Prices
 
 ```typescript
-import { oracleModuleAbi, PAIR_IDS } from "@fx-forward/sdk";
+import { oracleModuleAbi, PAIR_IDS } from "@nile-markets/sdk";
 
 // EUR/USD pair ID
 const pairId = PAIR_IDS.EUR_USD;
@@ -69,7 +69,7 @@ const [spotPrice, spotTimestamp, spotValid] = await client.readContract({
 ### Opening a Position
 
 ```typescript
-import { positionManagerAbi, Side, Tenor } from "@fx-forward/sdk";
+import { positionManagerAbi, Side, Tenor } from "@nile-markets/sdk";
 import { parseUnits } from "viem";
 
 // Simulate first
@@ -111,7 +111,7 @@ const hash = await walletClient.writeContract(request);
 Contract addresses are deployment-specific. For Sepolia, load from the deployment JSON:
 
 ```typescript
-import addresses from "@fx-forward/sdk/deployments/sepolia/addresses.json";
+import addresses from "@nile-markets/sdk/deployments/sepolia/addresses.json";
 
 const positionManager = addresses.positionManager; // "0x..."
 const poolVault = addresses.poolVault;             // "0x..."
