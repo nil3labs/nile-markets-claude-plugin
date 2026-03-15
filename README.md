@@ -8,16 +8,7 @@ Claude Code plugin for the [Nile Markets Protocol](https://docs.nilemarkets.com)
 
 ## Installation
 
-### From Git (manual)
-
-Clone the repository and point Claude Code to the plugin directory:
-
-```bash
-git clone https://github.com/nil3labs/nile-markets-monorepo.git
-claude --plugin-dir ./nile-markets-monorepo/integrations/claude-plugin
-```
-
-### Direct path (local development)
+This plugin is distributed as part of the Nile Markets monorepo. See [docs.nilemarkets.com/ai-agents/claude-code-plugin](https://docs.nilemarkets.com/ai-agents/claude-code-plugin) for installation.
 
 If you already have the monorepo checked out:
 
@@ -31,6 +22,33 @@ After launching Claude Code with the plugin, the `nile-markets` MCP server shoul
 
 ```
 What MCP tools are available from nile-markets?
+```
+
+## Usage
+
+Launch Claude Code with the plugin:
+
+```bash
+claude --plugin-dir ./integrations/claude-plugin
+```
+
+On launch, the `nile-markets` MCP server connects automatically. Invoke skills with:
+
+- `/nile-markets:query` — query live protocol data
+- `/nile-markets:integrate` — generate integration code
+- `/nile-markets:explain` — explain protocol concepts
+
+To switch between local and production MCP endpoints, edit `.mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "nile-markets": {
+      "url": "http://localhost:3100/api/mcp",
+      "transport": "streamable-http"
+    }
+  }
+}
 ```
 
 ## Skills
@@ -182,52 +200,8 @@ The server starts on `http://localhost:3000`. To use the local server instead of
 
 ## Deployment
 
-### MCP Server
-
-The MCP server (`packages/mcp/`) is deployed as a Next.js application on Vercel.
-
-**Required environment variables:**
-
-| Variable | Description |
-|----------|-------------|
-| `RPC_URL` | Ethereum RPC endpoint (e.g., Alchemy or Infura Sepolia URL) |
-| `SUBGRAPH_URL` | The Graph subgraph query URL |
-| `NETWORK` | Network name (e.g., `sepolia`) |
-| `MILESTONE` | Current milestone (e.g., `M2`) |
-| `CHAIN_ID` | Chain ID (e.g., `11155111` for Sepolia) |
-
-**Production vs local `.mcp.json`:**
-
-Production (default in plugin):
-
-```json
-{
-  "mcpServers": {
-    "nile-markets": {
-      "url": "https://mcp.nilemarkets.com/api/mcp",
-      "transport": "streamable-http"
-    }
-  }
-}
-```
-
-Local development override:
-
-```json
-{
-  "mcpServers": {
-    "nile-markets": {
-      "url": "http://localhost:3000/api/mcp",
-      "transport": "streamable-http"
-    }
-  }
-}
-```
-
-### Documentation
-
-The documentation site at [docs.nilemarkets.com](https://docs.nilemarkets.com) is deployed via the Mintlify GitHub integration. Pushing changes to `docs/mintlify/` on the main branch triggers an automatic redeploy.
+See [`packages/mcp/README.md`](../../packages/mcp/README.md) for MCP server deployment instructions.
 
 ## License
 
-See the [repository root](https://github.com/nil3labs/nile-markets-monorepo) for license information.
+MIT License.
