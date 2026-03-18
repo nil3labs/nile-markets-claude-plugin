@@ -13,7 +13,7 @@ version: 0.3.0
 
 ## Available MCP Tools
 
-Use the `nile-markets` MCP server to query live protocol data. All tools return JSON with `protocolVersion`, `network`, `milestone`, and `data` fields. Tools sourcing data from the subgraph include `_meta.lastIndexedBlock` to detect sync lag.
+Use the `nile-markets` MCP server to query live protocol data. All tools return JSON with `protocol` (name + version), `network`, and `data` fields. Tools sourcing data from the subgraph include `_meta.lastIndexedBlock` to detect sync lag.
 
 ### Pool State
 
