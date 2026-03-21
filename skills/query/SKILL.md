@@ -4,6 +4,7 @@ description: Query Nile Markets protocol data — pool state, positions, oracle 
 version: 0.3.0
 ---
 <!-- Sync with integrations/openclaw/SKILL.md -->
+<!-- Universal skill file: packages/mcp/public/skill.md (served at mcp.nilemarkets.com/skill.md) -->
 
 # Query Nile Markets Protocol Data
 
