@@ -119,6 +119,25 @@ Returns historical pool events (deposits and withdrawals) from subgraph. Use for
 
 Returns fee event breakdown from subgraph. Each event includes fee type (trading, liquidation, termination, oracle), amount, and associated position/transaction.
 
+### Token Balance
+
+**Tool**: `get_token_balance`
+**Input**:
+- `address` (required): Ethereum address to check balance for
+- `token` (optional): Token contract address (defaults to protocol collateral USDC)
+
+Returns ERC-20 token balance with decimals and symbol. Defaults to protocol USDC if no token specified.
+
+### Token Allowance
+
+**Tool**: `check_allowance`
+**Input**:
+- `owner` (required): Address that granted the allowance
+- `spender` (required): Contract name (`"marginAccounts"`, `"poolVault"`, `"positionManager"`) or raw address
+- `token` (optional): Token contract address (defaults to protocol collateral USDC)
+
+Returns current ERC-20 allowance for the owner/spender pair with a human-readable spender label.
+
 ### Simulate Open Position
 
 **Tool**: `simulate_open_position`
