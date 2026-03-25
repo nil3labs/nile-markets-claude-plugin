@@ -95,15 +95,57 @@ nile position open --side LONG --tenor 1M --notional 10000
 
 The CLI builds the transaction, calls the OWS signer (separate process), and broadcasts.
 
-### Path B: MCP + OWS MCP Server (AI agents)
+### Path B: Full Write Flow via MCP Only (No CLI Required)
 
-Add both servers to your agent:
+This path uses two MCP servers — no Nile CLI installation needed.
+
+**One-time setup:**
+1. Install an OWS-compatible wallet: see https://docs.openwallet.sh/
+2. Create a wallet: `ows wallet create --name "nile-testnet"`
+3. Start OWS MCP server: `ows serve --mcp --port 3002`
+4. Add both MCP servers to Claude Code:
 ```bash
 claude mcp add nile-markets --transport http https://mcp.nilemarkets.com/api/mcp
-claude mcp add ows --transport http http://localhost:<port>/mcp  # ows serve --mcp
+claude mcp add ows --transport http http://localhost:3002/mcp
 ```
 
-Agent calls Nile MCP for calldata, then OWS MCP to sign and broadcast.
+**Complete position open flow (all via MCP tool calls):**
+
+Step 1 — Check protocol mode:
+→ `get_protocol_mode` — verify NORMAL mode
+
+Step 2 — Check USDC balance:
+→ `get_token_balance` with `{ address: "0xYOUR_ADDR" }`
+→ If insufficient on testnet, go to Step 3. On mainnet, acquire USDC externally.
+
+Step 3 — Mint test USDC (testnet only):
+→ `mint_test_token` with `{ to: "0xYOUR_ADDR", amount: "10000000000" }`
+→ Returns unsigned calldata (`to`, `data`, `value`, `chainId`)
+→ OWS MCP: `ows_sign_and_send` with `{ chainId: "eip155:11155111", to, data, value }`
+→ Wait for confirmation
+
+Step 4 — Check allowance for margin deposit:
+→ `check_allowance` with `{ owner: "0xYOUR_ADDR", spender: "marginAccounts" }`
+
+Step 5 — Approve if allowance insufficient:
+→ `approve_token` with `{ spender: "marginAccounts", amount: "25000000" }`
+→ OWS MCP: `ows_sign_and_send` with the returned calldata
+→ Wait for confirmation
+
+Step 6 — Simulate the position:
+→ `simulate_open_position` with `{ side: "LONG", tenor: "1M", notional: "10000000000", from: "0xYOUR_ADDR" }`
+→ Review: required margin, trading fee, entry strike
+
+Step 7 — Open the position:
+→ `open_position` with `{ side: "LONG", tenor: "1M", notional: "10000000000", margin: "20000000" }`
+→ OWS MCP: `ows_sign_and_send` with the returned calldata
+→ Wait for confirmation — position is now open
+
+**Notes:**
+- The agent orchestrates the flow; OWS handles all signing in an isolated process
+- Each `ows_sign_and_send` call goes through OWS's policy engine before signing
+- The agent never sees private keys — only unsigned calldata flows through MCP
+- Wallet setup (passphrase, key import, policies) happens outside this workflow via OWS CLI
 
 ### Path C: MCP + Any Signing Tool
 
