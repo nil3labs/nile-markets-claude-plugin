@@ -12,7 +12,7 @@ version: 0.3.0
 
 ## Overview
 
-Nile Markets is a EUR/USD non-deliverable forward (NDF) protocol on Ethereum. Integrations interact with on-chain contracts via the official SDKs:
+Nile Markets is an on-chain FX market powered by the Open Nile Protocol, starting with non-deliverable forwards (NDFs). Integrations interact with on-chain contracts via the official SDKs:
 
 - **TypeScript**: `@nile-markets/sdk` — ABI objects and typed constants for use with viem/wagmi
 - **Rust**: `fx-contracts` crate — alloy-rs bindings generated from Foundry artifacts

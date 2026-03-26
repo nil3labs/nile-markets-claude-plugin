@@ -1,6 +1,6 @@
 # Nile Markets — Claude Code Plugin
 
-Claude Code plugin for the [Nile Markets Protocol](https://docs.nilemarkets.com), a EUR/USD non-deliverable forward (NDF) protocol on Ethereum Sepolia.
+Claude Code plugin for [Nile Markets](https://docs.nilemarkets.com) — on-chain FX markets powered by the Open Nile Protocol, starting with non-deliverable forwards (NDFs).
 
 > **Sepolia Testnet Only** — This plugin connects to Sepolia testnet infrastructure. All data is for development and testing purposes only.
 

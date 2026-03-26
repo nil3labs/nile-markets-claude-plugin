@@ -1,7 +1,7 @@
 {
   "name": "nile-markets",
   "version": "0.3.0",
-  "description": "Nile Markets Protocol - EUR/USD non-deliverable forward (NDF) protocol on Ethereum Sepolia",
+  "description": "Nile Markets — on-chain FX markets powered by the Open Nile Protocol, starting with non-deliverable forwards (NDFs)",
   "author": "nil3labs",
   "skills": "skills/",
   "mcpServers": ".mcp.json"
