@@ -1,0 +1,23 @@
+{
+  "name": "nile-markets-claude-plugin",
+  "owner": {
+    "name": "Nile Markets",
+    "email": "team@nil3labs.com"
+  },
+  "metadata": {
+    "description": "Nile Markets — on-chain FX protocol skills and MCP integration for Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "nile-markets",
+      "source": "./",
+      "description": "On-chain FX markets powered by the Open Nile Protocol — query, integrate, explain, and execute",
+      "version": "0.3.0",
+      "author": { "name": "nil3labs" },
+      "homepage": "https://docs.nilemarkets.com/ai-agents/claude-code-plugin",
+      "license": "MIT",
+      "keywords": ["defi", "fx", "forwards", "ethereum", "mcp"],
+      "category": "blockchain"
+    }
+  ]
+}
