@@ -14,7 +14,7 @@ Use this skill when users ask about how the Nile Markets protocol works. Provide
 
 ### What is Nile Markets?
 
-Nile Markets is an on-chain non-deliverable forward (NDF) protocol. It enables traders to take long or short positions on the EUR/USD exchange rate at a future fixing date, settled in USDC on Ethereum. Unlike perpetual futures, positions have a fixed maturity date (tenor) and settle against a published forward price.
+Nile Markets is an onchain non-deliverable forward (NDF) protocol. It enables traders to take long or short positions on FX rates (currently EUR/USD and USD/JPY) at a future fixing date, settled in USDC on Ethereum. Unlike perpetual futures, positions have a fixed maturity date (tenor) and settle against a published forward price.
 
 - **Docs**: [Introduction](https://docs.nilemarkets.com/nile-markets/introduction)
 - **Docs**: [How It Works](https://docs.nilemarkets.com/nile-markets/how-it-works)
@@ -39,11 +39,11 @@ Each tenor has its own forward price derived from the spot rate and interest rat
 
 - **Docs**: [Tenors](https://docs.nilemarkets.com/nile-markets/tenors)
 
-### EUR/USD Pair
+### Supported Pairs
 
-The only trading pair in M2. The pair ID is a bytes32 identifier used across all contracts. Spot prices come from Pyth Network; forward prices are published by the protocol's publisher service.
+M2 supports EUR/USD and USD/JPY. Each pair has a bytes32 pairId (keccak256 of the name) used across all contracts. Spot prices come from Pyth Network; forward prices are published by the protocol's publisher service.
 
-- **Docs**: [EUR/USD Pair](https://docs.nilemarkets.com/nile-markets/eur-usd-pair)
+- **Docs**: [Supported Pairs](https://docs.nilemarkets.com/nile-markets/supported-pairs)
 
 ## Margin System
 
