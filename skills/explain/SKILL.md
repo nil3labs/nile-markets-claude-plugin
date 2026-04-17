@@ -1,7 +1,7 @@
 ---
 name: nile-markets:explain
 description: Explain Nile Markets protocol concepts — margin, liquidation, modes, settlement, forward pricing, pool mechanics, and trading flows
-version: 0.3.0
+version: 0.3.1
 ---
 
 # Explain Nile Markets Protocol Concepts
