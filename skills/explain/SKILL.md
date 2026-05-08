@@ -23,8 +23,8 @@ Nile Markets is an onchain non-deliverable forward (NDF) protocol. It enables tr
 
 ### Sides (Long and Short)
 
-- **LONG**: Profits when EUR/USD rises (EUR strengthens vs USD). PnL = notional * (currentPrice - entryStrike) / PRICE_PRECISION.
-- **SHORT**: Profits when EUR/USD falls (EUR weakens vs USD). PnL = notional * (entryStrike - currentPrice) / PRICE_PRECISION.
+- **LONG**: Profits when the pair rate rises (base strengthens vs quote — e.g. EUR strengthens vs USD on EUR/USD). PnL = notional * (currentPrice - entryStrike) / PRICE_PRECISION.
+- **SHORT**: Profits when the pair rate falls (base weakens vs quote). PnL = notional * (entryStrike - currentPrice) / PRICE_PRECISION.
 
 - **Docs**: [Sides](https://docs.nilemarkets.com/nile-markets/sides)
 
@@ -116,7 +116,7 @@ When a position reaches its fixing date:
 
 ## Forward Pricing
 
-Forward prices are derived from the spot EUR/USD rate and published on-chain by the protocol's publisher service:
+Forward prices are derived from each pair's spot rate (EUR/USD, USD/JPY) and published on-chain by the protocol's publisher service:
 
 - **Spot price**: Sourced from Pyth Network oracle
 - **Forward prices**: Computed by the publisher using spot + interest rate differentials, published per-tenor
@@ -228,4 +228,4 @@ When explaining concepts to users:
 3. **Reference docs** — Always include the relevant docs URL so users can read the full specification.
 4. **Clarify testnet context** — Remind users this is Sepolia testnet; parameters and addresses may differ on mainnet.
 5. **Distinguish unrealized vs realized** — Unrealized PnL changes with the forward price; realized PnL is locked in at settlement or early close.
-6. **Note M2 limitations** — Only EUR/USD pair, three tenors, no cross-margin, no keeper automation yet.
+6. **Note M2 limitations** — Two pairs (EUR/USD, USD/JPY), six tenors (1D / 1W / 1M / 3M / 6M / 1Y) registered on Sepolia, isolated margin only (cross-margin enum exists but unimplemented), no holiday calendar.
