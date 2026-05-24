@@ -1,7 +1,7 @@
 ---
 name: nile-markets:integrate
 description: Generate TypeScript or Rust integration code for the Nile Markets protocol using viem, wagmi, or alloy-rs with the official SDK
-version: 0.3.1
+version: 0.3.2
 ---
 
 # Integrate with Nile Markets Protocol

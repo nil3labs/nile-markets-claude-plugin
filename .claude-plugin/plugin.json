@@ -1,6 +1,6 @@
 {
   "name": "nile-markets",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Nile Markets — on-chain FX markets powered by the Open Nile Protocol, starting with non-deliverable forwards (NDFs)",
   "author": {
     "name": "nil3labs"

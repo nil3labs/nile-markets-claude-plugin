@@ -4,7 +4,7 @@ Claude Code plugin for [Nile Markets](https://docs.nilemarkets.com) — on-chain
 
 > **Sepolia Testnet Only** — All data is for development and testing purposes only.
 
-> **Unstable API (v0.3.1)** — Tool schemas and skill instructions may change without notice during the M2 milestone.
+> **Unstable API (v0.3.2)** — Tool schemas and skill instructions may change without notice during the M2 milestone.
 
 ## Installation
 

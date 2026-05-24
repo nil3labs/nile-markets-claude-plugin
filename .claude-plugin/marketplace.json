@@ -12,7 +12,7 @@
       "name": "nile-markets",
       "source": "./",
       "description": "On-chain FX markets powered by the Open Nile Protocol — query, integrate, explain, and execute",
-      "version": "0.3.1",
+      "version": "0.3.2",
       "author": { "name": "nil3labs" },
       "homepage": "https://docs.nilemarkets.com/ai-agents/claude-code-plugin",
       "license": "MIT",

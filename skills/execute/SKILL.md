@@ -1,7 +1,7 @@
 ---
 name: nile-markets:execute
 description: Orchestrate on-chain operations on the Nile Markets protocol — positions, margin, vault, and token operations with signing guidance
-version: 0.3.1
+version: 0.3.2
 metadata:
   filePattern: []
   bashPattern: ["nile\\s+(position|account|pool|token|vault)"]
